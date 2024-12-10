@@ -23,7 +23,7 @@ function NavBar() {
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-            <img src="/public/logo.png" height="30px"/>
+            <img src="./logo.png" height="30px"/>
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1, fontFamily: "Pixelify Sans" }}>
             Visualicious!
@@ -43,7 +43,7 @@ function Landing() {
   return (
     <>
     <Stack rowGap="20px" sx={{justifyContent: "center", alignItems: "center", paddingTop: "65px"}}>
-      <item><img src="/public/logo.png" height="200px" style={{userSelect: "none"}}/></item>
+      <item><img src="./logo.png" height="200px" style={{userSelect: "none"}}/></item>
       <item>
         <Box sx={{textAlign: "center"}}>
         <Typography variant="h3" component="div" sx={{ flexGrow: 1, fontFamily: "Pixelify Sans" }}>Visualicious!</Typography>
@@ -51,14 +51,7 @@ function Landing() {
         </Box>
       </item>
       <TextField
-      InputProps={{
-          sx: {
-              "& input": {
-                  textAlign: "center",
-                  color: "white"
-              }
-          }
-      }}
+      sx={{"& input": {textAlign: "center",color: "white"}}}
       placeholder="Search your topic here..."
       variant='filled'
       onChange={(e) => {
@@ -75,8 +68,8 @@ function Landing() {
     <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} sx={{ paddingTop: "2rem", margin: "10px"}}>
     {ToDisplay.map((algo, index) => (
       <Grid item xs={12} sm={6} md={3} key={index}>
-        <Box sx={{backgroundColor: "white", paddingBottom: "20px", textAlign: "center", height: "260px", borderRadius: "0.7rem", ":hover": {borderStyle: "solid", borderColor: "black"} }} onClick={() => {navigate(algo.path)}}>
-          <Typography variant="h5" sx={{ flexGrow: 1, fontFamily: "Pixelify Sans", color: "black"}}>{`${algo.name} Sort`}</Typography>
+        <Box sx={{backgroundColor: "white", paddingBottom: "20px", textAlign: "center", objectFit: "cover", borderRadius: "0.7rem", ":hover": {borderStyle: "solid", borderColor: "black"} }} onClick={() => {navigate(algo.path)}}>
+          <Typography variant="h5" sx={{fontFamily: "Pixelify Sans", color: "black"}}>{`${algo.name} Sort`}</Typography>
             <img src={algo.image} width="100%">
           </img>
         </Box>

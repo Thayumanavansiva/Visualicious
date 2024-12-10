@@ -2,18 +2,18 @@ import * as React from 'react';
 import { Typography, AppBar, Box, Stack, Slider, Button, FormControlLabel, Checkbox, Modal } from '@mui/material';
 import {BubbleSortWrapper} from '../Algorithms/SortingAlgorithms/BubbleSort';
 import {SOKERS} from '../CONSTANTS';
+import { shuffle, generateArray } from './helper';
 
 export default function BubbleSortApp(){
     const [arraySize, setArraySize] = React.useState(10);
     const [array, setArray] = React.useState(Array.from({length: arraySize}, () => Math.floor(Math.random() * 100)));
     const [speed, setSpeed] = React.useState(1);
     const [isSokerMode, setisSoker] = React.useState(false);
-    const [shutSlider, setShutSlider] = React.useState(false);
-    const [bars, setisBars] = React.useState(document.getElementsByClassName("bars"));
+    const [bars] = React.useState(document.getElementsByClassName("bars"));
     const [animationTimeouts, setAnimationTimeouts] = React.useState([]);
     const [isPopup, setisPopup] = React.useState(false);
     const [sokerIndex, setSokerIndex] = React.useState(bars.length - 1);
-    const [Sokers, setSokers] = React.useState(SOKERS);
+    const [Sokers] = React.useState(SOKERS);
 
     const Popup = (
         <Modal
@@ -39,27 +39,13 @@ export default function BubbleSortApp(){
         </Modal>
     )
 
-    const shuffle = (array) => { 
-        for (let i = array.length - 1; i > 0; i--) { 
-          const j = Math.floor(Math.random() * (i + 1)); 
-          [array[i], array[j]] = [array[j], array[i]]; 
-        } 
-        return array; 
-      }; 
-
     React.useEffect(() => {
         for (let i=0; i<(Math.random()*5)+1; i++){
             shuffle([...Sokers]);
         }
     }
-    , []);
+    , [Sokers]);
     
-    
-
-    function generateArray(size) {
-        const newarray = Array.from({ length: size }, () => Math.floor(Math.random() * (100 - 5) + 5));
-        return newarray;
-    }
 
     React.useEffect(() => {
         setArray(generateArray(arraySize));
@@ -123,7 +109,7 @@ export default function BubbleSortApp(){
 
     return (
         <>
-        {isPopup && Popup}
+        {isSokerMode && Popup}
         <Box sx={{ flexGrow: 1}}>
             <AppBar position="fixed" sx={{backgroundColor:"black", height: "70px"}}>
                 <Stack direction="row" sx={{columnGap: {"sm": "10px", "md": "100px"}}}>
@@ -144,7 +130,7 @@ export default function BubbleSortApp(){
                     onChange={(event) => {
                         setArraySize(event.target.value);
                     }}
-                    disabled={shutSlider}
+                    disabled={isSokerMode}
                     min={10}
                     max={100}
                 />  
@@ -162,14 +148,14 @@ export default function BubbleSortApp(){
                     onChange={(event) => {
                         setSpeed(event.target.value);
                     }}
-                    disabled={shutSlider}
+                    disabled={isSokerMode}
                     min={1}
                     max={50}
                 />  
                 </Box>
                 </Stack>
                 <Box sx={{padding: "18px 0px 0px 20px"}}>
-                <FormControlLabel control={<Checkbox sx={{color: "#229799",'&.Mui-checked': {color: "#229799"}}} onChange={() => {setisSoker(!isSokerMode); setShutSlider(!shutSlider); shuffle(Sokers)}} />} label="Soker Mode 🤡!"></FormControlLabel>
+                <FormControlLabel control={<Checkbox sx={{color: "#229799",'&.Mui-checked': {color: "#229799"}}} onChange={() => {setisSoker(!isSokerMode); shuffle(Sokers)}} />} label="Soker Mode 🤡!"></FormControlLabel>
                 </Box>
                 <div style={{ padding: "20px 0px 0px 20px" }}>
                             <Button onClick={BubbleSortCaller} sx={{ textAlign: "center" }}>

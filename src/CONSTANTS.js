@@ -4,7 +4,7 @@ export const Algos = [
         "timeComplexity": "O(n^2)",
         "spaceComplexity": "O(1)",
         "name": "Bubble",
-        "image": "/public/bubble-sort.webp",
+        "image": "./bubble-sort.gif",
         "path": "/sort/bubble-sort"
     },
     {
@@ -12,7 +12,7 @@ export const Algos = [
         "timeComplexity": "O(n^2)",
         "spaceComplexity": "O(1)",
         "name": "Selection",
-        "image": "/public/selection-sort.png",
+        "image": "./selection-sort.gif",
         "path": "/sort/selection-sort"
     },
      {
@@ -20,7 +20,7 @@ export const Algos = [
         "timeComplexity": "O(n^2)",
         "spaceComplexity": "O(1)",
         "name": "Insertion",
-        "image": "/public/insertion-sort.jpg",
+        "image": "./insertion-sort.gif",
         "path": "/sort/insertion-sort"
     },
     {
@@ -28,49 +28,49 @@ export const Algos = [
         "timeComplexity": "O(n log n)",
         "spaceComplexity": "O(n)",
         "name": "Merge",
-        "image": "/public/merge-sort.png"
+        "image": "./merge-sort.gif"
     },
 ]
 
 export const SOKERS = [
     {
-        "image" : "/public/Sokers/1.jpg",
+        "image" : "/Sokers/1.jpg",
         "name" : "Gokul"
     },
     {
-        "image" : "/public/Sokers/2.jpg",
+        "image" : "/Sokers/2.jpg",
         "name" : "Gokul2"
     },
     {
-        "image" : "/public/Sokers/3.jpg",
+        "image" : "/Sokers/3.jpg",
         "name" : "Gokul3"
     },
     {
-        "image" : "/public/Sokers/4.jpg",
+        "image" : "/Sokers/4.jpg",
         "name" : "Gokul4"
     },
     {
-        "image" : "/public/Sokers/5.jpg",
+        "image" : "/Sokers/5.jpg",
         "name" : "Gokul4"
     },
     {
-        "image" : "/public/Sokers/6.jpg",
+        "image" : "/Sokers/6.jpg",
         "name" : "Gokul4"
     },
     {
-        "image" : "/public/Sokers/7.jpg",
+        "image" : "/Sokers/7.jpg",
         "name" : "Gokul4"
     },
     {
-        "image" : "/public/Sokers/8.jpg",
+        "image" : "/Sokers/8.jpg",
         "name" : "Gokul4"
     },
     {
-        "image" : "/public/Sokers/9.jpg",
+        "image" : "/Sokers/9.jpg",
         "name" : "Gokul4"
     },
     {
-        "image" : "/public/Sokers/10.jpg",
+        "image" : "/Sokers/10.jpg",
         "name" : "Gokul4"
     },
 ];
