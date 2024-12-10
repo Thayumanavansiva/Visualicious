@@ -9,6 +9,8 @@
 - **Selection Sort**
 - **Merge Sort**
 
+**Dont Take me wrong: Working on to add more Algorithms 🧑‍🏭⚒️**
+
 
 # Feature
 
