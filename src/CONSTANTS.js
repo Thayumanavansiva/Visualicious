@@ -32,9 +32,9 @@ export const Algos = [
         "path": "/sort/merge-sort"
     },
     {
-        "description": "Merge Sort is a Divide and Conquer algorithm. It divides the input array into two halves, calls itself for the two halves, and then merges the two sorted halves.",
+        "description": "Quicksort algorithm is a sorting algorithm that uses a divide-and-conquer strategy to sort an array or list of element.",
         "timeComplexity": "O(n log n)",
-        "spaceComplexity": "O(n)",
+        "spaceComplexity": "O(n log n)",
         "name": "Quick",
         "image": "./quick-sort.gif",
         "path": "/sort/quick-sort"
