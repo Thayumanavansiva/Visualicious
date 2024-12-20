@@ -28,7 +28,8 @@ export const Algos = [
         "timeComplexity": "O(n log n)",
         "spaceComplexity": "O(n)",
         "name": "Merge",
-        "image": "./merge-sort.gif"
+        "image": "./merge-sort.gif",
+        "path": "/sort/merge-sort"
     },
 ]
 

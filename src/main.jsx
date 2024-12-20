@@ -2,9 +2,12 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import { createBrowserRouter,RouterProvider } from "react-router-dom";
+
 import BubbleSortApp from './AlgorithmsVisualizer/BubbleSort.jsx';
 import SelectionSortApp from './AlgorithmsVisualizer/SelectionSort.jsx';
 import InsertionSortApp from './AlgorithmsVisualizer/InsertionSort.jsx';
+import MergeSortApp from './AlgorithmsVisualizer/MergeSort.jsx';
+
 import './index.css'
 
 const router = createBrowserRouter([
@@ -23,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: 'sort/insertion-sort',
     element: <InsertionSortApp />
+  },
+  {
+    path: 'sort/merge-sort',
+    element: <MergeSortApp />
   }
 ]);
 
