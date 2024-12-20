@@ -7,6 +7,7 @@ import BubbleSortApp from './AlgorithmsVisualizer/BubbleSort.jsx';
 import SelectionSortApp from './AlgorithmsVisualizer/SelectionSort.jsx';
 import InsertionSortApp from './AlgorithmsVisualizer/InsertionSort.jsx';
 import MergeSortApp from './AlgorithmsVisualizer/MergeSort.jsx';
+import QuickSortApp from './AlgorithmsVisualizer/Quicksort.jsx';
 
 import './index.css'
 
@@ -30,7 +31,12 @@ const router = createBrowserRouter([
   {
     path: 'sort/merge-sort',
     element: <MergeSortApp />
+  },
+  {
+    path: 'sort/quick-sort',
+    element: <QuickSortApp />
   }
+
 ]);
 
 createRoot(document.getElementById('root')).render(

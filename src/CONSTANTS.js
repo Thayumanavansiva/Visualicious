@@ -31,6 +31,14 @@ export const Algos = [
         "image": "./merge-sort.gif",
         "path": "/sort/merge-sort"
     },
+    {
+        "description": "Merge Sort is a Divide and Conquer algorithm. It divides the input array into two halves, calls itself for the two halves, and then merges the two sorted halves.",
+        "timeComplexity": "O(n log n)",
+        "spaceComplexity": "O(n)",
+        "name": "Quick",
+        "image": "./quick-sort.gif",
+        "path": "/sort/quick-sort"
+    }
 ]
 
 export const SOKERS = [
