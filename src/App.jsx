@@ -8,7 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import { Grid } from '@mui/material';
-import { Algos } from './CONSTANTS.js';
+import { Algos } from './AlgorithmsVisualizer/CONSTANTS.js';
 import { useNavigate } from 'react-router-dom';
 
 function NavBar() {
@@ -65,11 +65,11 @@ function Landing() {
 />
     </Stack>
 
-    <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} sx={{ paddingTop: "2rem", margin: "10px"}}>
+    <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} sx={{ paddingTop: "2rem", paddingLeft: "2rem", paddingRight: "2rem" }}>
     {ToDisplay.map((algo, index) => (
       <Grid item xs={12} sm={6} md={3} key={index}>
         <Box sx={{backgroundColor: "white", paddingBottom: "20px", textAlign: "center", objectFit: "cover", borderRadius: "0.7rem", ":hover": {borderStyle: "solid", borderColor: "black"} }} onClick={() => {navigate(algo.path)}}>
-          <Typography variant="h5" sx={{fontFamily: "Pixelify Sans", color: "black"}}>{`${algo.name} Sort`}</Typography>
+          <Typography variant="h5" sx={{fontFamily: "Pixelify Sans", color: "black"}}>{`${algo.name}`}</Typography>
             <img src={algo.image} width="100%">
           </img>
         </Box>

@@ -3,7 +3,7 @@ export const Algos = [
         "description": "Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in wrong order.",
         "timeComplexity": "O(n^2)",
         "spaceComplexity": "O(1)",
-        "name": "Bubble",
+        "name": "Bubble Sort",
         "image": "./bubble-sort.gif",
         "path": "/sort/bubble-sort"
     },
@@ -11,7 +11,7 @@ export const Algos = [
         "description": "The selection sort algorithm sorts an array by repeatedly finding the minimum element (considering ascending order) from unsorted part and putting it at the beginning.",
         "timeComplexity": "O(n^2)",
         "spaceComplexity": "O(1)",
-        "name": "Selection",
+        "name": "Selection Sort",
         "image": "./selection-sort.gif",
         "path": "/sort/selection-sort"
     },
@@ -19,7 +19,7 @@ export const Algos = [
         "description": "Insertion sort is a simple sorting algorithm that works the way we sort playing cards in our hands.",
         "timeComplexity": "O(n^2)",
         "spaceComplexity": "O(1)",
-        "name": "Insertion",
+        "name": "Insertion Sort",
         "image": "./insertion-sort.gif",
         "path": "/sort/insertion-sort"
     },
@@ -27,7 +27,7 @@ export const Algos = [
         "description": "Merge Sort is a Divide and Conquer algorithm. It divides the input array into two halves, calls itself for the two halves, and then merges the two sorted halves.",
         "timeComplexity": "O(n log n)",
         "spaceComplexity": "O(n)",
-        "name": "Merge",
+        "name": "Merge Sort",
         "image": "./merge-sort.gif",
         "path": "/sort/merge-sort"
     },
@@ -35,9 +35,16 @@ export const Algos = [
         "description": "Quicksort algorithm is a sorting algorithm that uses a divide-and-conquer strategy to sort an array or list of element.",
         "timeComplexity": "O(n log n)",
         "spaceComplexity": "O(n log n)",
-        "name": "Quick",
+        "name": "Quick Sort",
         "image": "./quick-sort.gif",
         "path": "/sort/quick-sort"
+    },
+    {
+        "description": "Arrays",
+        "timeComplexity": "O(n)",
+        "spaceComplexity": "O(n)",
+        "name": "Array",
+        "path:": "/array"
     }
 ]
 

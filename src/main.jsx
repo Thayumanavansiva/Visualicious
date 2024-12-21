@@ -3,11 +3,13 @@ import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import { createBrowserRouter,RouterProvider } from "react-router-dom";
 
-import BubbleSortApp from './AlgorithmsVisualizer/BubbleSort.jsx';
-import SelectionSortApp from './AlgorithmsVisualizer/SelectionSort.jsx';
-import InsertionSortApp from './AlgorithmsVisualizer/InsertionSort.jsx';
-import MergeSortApp from './AlgorithmsVisualizer/MergeSort.jsx';
-import QuickSortApp from './AlgorithmsVisualizer/Quicksort.jsx';
+import BubbleSortApp from './AlgorithmsVisualizer/Sorting/BubbleSort.jsx';
+import SelectionSortApp from './AlgorithmsVisualizer/Sorting/SelectionSort.jsx';
+import InsertionSortApp from './AlgorithmsVisualizer/Sorting/InsertionSort.jsx';
+import MergeSortApp from './AlgorithmsVisualizer/Sorting/MergeSort.jsx';
+import QuickSortApp from './AlgorithmsVisualizer/Sorting/Quicksort.jsx';
+
+import ArrayApp from './AlgorithmsVisualizer/Array/array.jsx';
 
 import './index.css'
 
@@ -35,6 +37,10 @@ const router = createBrowserRouter([
   {
     path: 'sort/quick-sort',
     element: <QuickSortApp />
+  },
+  {
+    path: "array",
+    element: <ArrayApp/>
   }
 
 ]);
