@@ -14,6 +14,7 @@ export default function QuickSortApp() {
     const [isPopup, setisPopup] = React.useState(false);
     const [sokerIndex, setSokerIndex] = React.useState(bars.length - 1);
     const [Sokers] = React.useState(SOKERS);
+    const [disabled, setDisabled] = React.useState(false);
 
     const Popup = (
         <Modal
@@ -51,18 +52,19 @@ export default function QuickSortApp() {
     function QuickSortCaller() {
         animationTimeouts.forEach(timeoutId => clearTimeout(timeoutId));
         setAnimationTimeouts([]);
-    
+        setDisabled(true); 
+
         let auxillaryArray = array.slice();
         let animations = QuickSortWrapper(auxillaryArray);
-    
+
         const baseDelay = 1600;
         const delayFactor = 1 / speed; 
         const delay = baseDelay * delayFactor; 
-    
+
         let timeouts = animations.map((animation, index) => {
             return setTimeout(() => {
                 const { comparison, swap, pivot } = animation;
-    
+
                 setArray((prevArray) => {
                     const updatedArray = [...prevArray];
                     if (swap) {
@@ -71,17 +73,17 @@ export default function QuickSortApp() {
                     }
                     return updatedArray;
                 });
-    
+
                 if (comparison) {
                     const [i, j] = comparison;
                     bars[i].style.backgroundColor = "#FF4949";
                     bars[j].style.backgroundColor = "#FF4949";
                 }
-    
+
                 if (pivot !== undefined) {
                     bars[pivot].style.backgroundColor = "yellow";
                 }
-    
+
                 setTimeout(() => {
                     if (comparison) {
                         const [i, j] = comparison;
@@ -91,9 +93,9 @@ export default function QuickSortApp() {
                 }, 600 * delayFactor);
             }, index * delay);
         });
-    
+
         setAnimationTimeouts(timeouts);
-    
+
         setTimeout(() => {
             for (let i = 0; i < bars.length; i++) {
                 bars[i].style.backgroundColor = "#229799";
@@ -101,9 +103,9 @@ export default function QuickSortApp() {
             setArray(auxillaryArray); 
             setSokerIndex(bars.length - 1);
             setisPopup(true);
+            setDisabled(false); 
         }, animations.length * delay);
     }
-    
 
     return (
         <>
@@ -128,7 +130,7 @@ export default function QuickSortApp() {
                                     onChange={(event) => {
                                         setArraySize(event.target.value);
                                     }}
-                                    disabled={isSokerMode}
+                                    disabled={isSokerMode || disabled}
                                     min={10}
                                     max={100}
                                 />
@@ -146,7 +148,7 @@ export default function QuickSortApp() {
                                     onChange={(event) => {
                                         setSpeed(event.target.value);
                                     }}
-                                    disabled={isSokerMode}
+                                    disabled={isSokerMode || disabled}
                                     min={1}
                                     max={50}
                                 />
@@ -156,7 +158,7 @@ export default function QuickSortApp() {
                             <FormControlLabel control={<Checkbox sx={{ color: "#229799", '&.Mui-checked': { color: "#229799" } }} onChange={() => { setisSoker(!isSokerMode); shuffle(Sokers) }} />} label="Soker Mode 🤡!" />
                         </Box>
                         <div style={{ padding: "20px 0px 0px 20px" }}>
-                            <Button onClick={QuickSortCaller} sx={{ textAlign: "center" }}>
+                            <Button onClick={QuickSortCaller} sx={{ textAlign: "center" }} disabled={disabled}>
                                 <Typography variant="body2" component="div" sx={{ fontFamily: "Pixelify Sans" }}>
                                     Sort Now!
                                 </Typography>
@@ -176,7 +178,7 @@ export default function QuickSortApp() {
                                         index < Sokers.length &&
                                         <img src={Sokers[index].image} width={`${Math.floor(window.innerWidth / (arraySize * 3))}px`}></img>
                                     }
-                                                                        <Typography className="values" sx={{ textAlign: "center", fontFamily: "Pixelify Sans", fontSize: "small" }}>
+                                    <Typography className="values" sx={{ textAlign: "center", fontFamily: "Pixelify Sans", fontSize: "small" }}>
                                         {value}
                                     </Typography>
                                 </Stack>
@@ -196,4 +198,3 @@ export default function QuickSortApp() {
         </>
     );
 }
-
