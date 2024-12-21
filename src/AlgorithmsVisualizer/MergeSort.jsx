@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import * as React from 'react';
 import { Typography, AppBar, Box, Stack, Slider, Button, FormControlLabel, Checkbox } from '@mui/material';
 import { getMergeSortAnimations } from '../Algorithms/SortingAlgorithms/MergeSort.jsx';
