@@ -1,8 +1,11 @@
 import * as React from 'react';
-import { Typography, AppBar, Box, Stack, Slider, Button, FormControlLabel, Checkbox } from '@mui/material';
+import { Typography, Box, Stack } from '@mui/material';
 import { SelectionSortWrapper } from '../../Algorithms/SortingAlgorithms/SelectionSort.jsx';
 import { shuffle, generateArray } from '../helper.jsx';
 import {SOKERS} from '../CONSTANTS';
+
+import Popup from './Popup.jsx';
+import NavBar from './NavBar.jsx';
 
 export default function SelectionSortApp(){
     const [bars] = React.useState(document.getElementsByClassName("bars"));
@@ -62,7 +65,6 @@ export default function SelectionSortApp(){
     }, [codelineCouter]);
 
 
-    const Popup = sokerPopup(isPopup, setisPopup, sokerIndex, bars);
     
     function SelectionSortCaller(){
         animationTimeouts.forEach(timeoutId => clearTimeout(timeoutId));
@@ -132,64 +134,19 @@ export default function SelectionSortApp(){
 
     return (
         <>
-        {isSokerMode && Popup}
-        <Box sx={{ flexGrow: 1}}>
-            <AppBar position="fixed" sx={{backgroundColor:"black", height: "70px"}}>
-                <Stack direction="row" sx={{columnGap: {"sm": "10px", "md": "100px"}}}>
-                <Typography variant="h5" component="div" sx={{fontFamily: "Pixelify Sans", padding: "20px 0px 0px 20px" }}>
-                    Selection Sort
-                </Typography>
-                <Stack direction="row" gap={3} sx={{padding: "25px 0px 0px 20px"}}>
-                <Typography variant = "body" component="div" sx={{fontFamily: "Pixelify Sans"}}>
-                    Array Size
-                </Typography>
-                <Box sx={{width: "200px"}}>
-                <Slider
-                    aria-label="Array Size"
-                    defaultValue={10}
-                    valueLabelDisplay="auto"
-                    value={arraySize}
-                    size="small"
-                    disabled={isSokerMode || disabled}
-                    onChange={(event) => {
-                        setArraySize(event.target.value);
-                    }}
-                    min={5}
-                    max={100}
-                />  
-                </Box>
-                <Typography variant = "body" component="div" sx={{fontFamily: "Pixelify Sans"}}>
-                    Speed
-                </Typography>
-                <Box sx={{width: "200px"}}>
-                <Slider
-                    aria-label="Speed"
-                    defaultValue={1}
-                    valueLabelDisplay="auto"
-                    value={speed}
-                    size="small"
-                    disabled={isSokerMode || disabled}
-                    onChange={(event) => {
-                        setSpeed(event.target.value);
-                    }}
-                    min={1}
-                    max={50}
-                />  
-                </Box>
-                </Stack>
-                <Box sx={{padding: "18px 0px 0px 20px"}}>
-                <FormControlLabel control={<Checkbox sx={{color: "#229799",'&.Mui-checked': {color: "#229799"}}} onChange={() => {setisSoker(!isSokerMode); shuffle(Sokers.current)}} />} label="Soker Mode 🤡!"></FormControlLabel>
-                </Box>                
-                <div style={{ padding: "20px 0px 0px 20px" }}>
-                <Button onClick={SelectionSortCaller} sx={{ textAlign: "center" }} disabled={disabled}>
-                    <Typography variant="body2" component="div" sx={{ fontFamily: "Pixelify Sans" }}>
-                        Sort Now!
-                    </Typography>
-                </Button>
-                </div>         
-                </Stack>
-            </AppBar>            
-        </Box>
+        {isSokerMode && <Popup isPopup={isPopup} setisPopup={(data) => setisPopup(data)} sokerIndex={sokerIndex} bars={bars} />}
+        <NavBar
+            name="Selection Sort" 
+            arraySize={arraySize}
+            updateArraySize={(data) => setArraySize(data)}
+            speed={speed}
+            updateSpeed={(data) => setSpeed(data)}
+            isSokerMode={isSokerMode}
+            updateSokerMode={(data) => setisSoker(data)}
+            disabled={disabled}
+            caller={SelectionSortCaller}
+            Sokers={Sokers}
+        />
         <Box sx={{bgcolor: "#3C3D37", position: "relative"}}>
             <Stack direction="row" spacing={0.5} sx={{height: "90vh", mx: {"xs": "0px", "md": "130px"}, paddingTop: "60px", justifyContent: "center"}}>
                     {

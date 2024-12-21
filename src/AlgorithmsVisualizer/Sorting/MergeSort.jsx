@@ -10,7 +10,7 @@ import Bars from './Bars.jsx';
 export default function MergeSortApp(){
 
     const [bars] = React.useState(document.getElementsByClassName("bars"));
-    const Sokers = React.useRef(SOKERS);
+    const [Sokers] = React.useState(SOKERS);
 
 
 
@@ -35,7 +35,7 @@ export default function MergeSortApp(){
 
     React.useEffect(() => {
         for (let i=0; i<(Math.random()*5)+1; i++){
-            shuffle([...Sokers.current]);
+            shuffle([...Sokers]);
         }
     }
     , [Sokers]);
@@ -136,7 +136,7 @@ export default function MergeSortApp(){
             setSokerIndex(bars.length - 1);
             setisPopup(true);
             setDisabled(false);
-        }, animations.length * delay);
+        }, (animations.length * delay)*2.5);
     }
 
     return (
