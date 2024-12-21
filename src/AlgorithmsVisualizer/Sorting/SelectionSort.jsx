@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Typography, AppBar, Box, Stack, Slider, Button, FormControlLabel, Checkbox } from '@mui/material';
-import { SelectionSortWrapper } from '../Algorithms/SortingAlgorithms/SelectionSort';
-import { shuffle, generateArray, sokerPopup } from './helper.jsx';
+import { SelectionSortWrapper } from '../../Algorithms/SortingAlgorithms/SelectionSort.jsx';
+import { shuffle, generateArray } from '../helper.jsx';
 import {SOKERS} from '../CONSTANTS';
 
 export default function SelectionSortApp(){
