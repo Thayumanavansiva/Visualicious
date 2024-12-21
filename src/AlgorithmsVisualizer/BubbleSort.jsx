@@ -14,6 +14,7 @@ export default function BubbleSortApp(){
     const [isPopup, setisPopup] = React.useState(false);
     const [sokerIndex, setSokerIndex] = React.useState(bars.length - 1);
     const [Sokers] = React.useState(SOKERS);
+    const [disabled, setDisabled] = React.useState(false);
 
     const Popup = (
         <Modal
@@ -54,6 +55,7 @@ export default function BubbleSortApp(){
     function BubbleSortCaller(){
         animationTimeouts.forEach(timeoutId => clearTimeout(timeoutId));
         setAnimationTimeouts([]);
+        setDisabled(true);
 
         let auxillaryArray = array.slice();
         let animations = BubbleSortWrapper(auxillaryArray);
@@ -62,6 +64,7 @@ export default function BubbleSortApp(){
         const baseDelay = 1600; // Base delay for animation
         const delayFactor = 1 / speed; // Speed scaling factor
         const delay = baseDelay * delayFactor; // Final delay per step
+
 
         let timeouts = animations.map((animation, index) =>{
             setTimeout(() => {
@@ -104,7 +107,9 @@ export default function BubbleSortApp(){
             setArray(auxillaryArray);
             setSokerIndex(bars.length - 1);
             setisPopup(true);
+            setDisabled(false);
         }, animations.length * delay);
+
     }
 
     return (
@@ -123,15 +128,15 @@ export default function BubbleSortApp(){
                 <Box sx={{width: "200px"}}>
                 <Slider
                     aria-label="Array Size"
-                    defaultValue={10}
+                    defaultValue={5}
                     valueLabelDisplay="auto"
                     value={arraySize}
                     size="small"
                     onChange={(event) => {
                         setArraySize(event.target.value);
                     }}
-                    disabled={isSokerMode}
-                    min={10}
+                    disabled={isSokerMode || disabled}
+                    min={5}
                     max={100}
                 />  
                 </Box>
@@ -148,7 +153,7 @@ export default function BubbleSortApp(){
                     onChange={(event) => {
                         setSpeed(event.target.value);
                     }}
-                    disabled={isSokerMode}
+                    disabled={isSokerMode || disabled}
                     min={1}
                     max={50}
                 />  
@@ -158,7 +163,7 @@ export default function BubbleSortApp(){
                 <FormControlLabel control={<Checkbox sx={{color: "#229799",'&.Mui-checked': {color: "#229799"}}} onChange={() => {setisSoker(!isSokerMode); shuffle(Sokers)}} />} label="Soker Mode 🤡!"></FormControlLabel>
                 </Box>
                 <div style={{ padding: "20px 0px 0px 20px" }}>
-                            <Button onClick={BubbleSortCaller} sx={{ textAlign: "center" }}>
+                            <Button onClick={BubbleSortCaller} sx={{ textAlign: "center" }} disabled={disabled}>
                                 <Typography variant="body2" component="div" sx={{ fontFamily: "Pixelify Sans" }}>
                                     Sort Now!
                                 </Typography>

@@ -20,6 +20,7 @@ export default function MergeSortApp(){
     const [animationTimeouts, setAnimationTimeouts] = React.useState([]);
     const [codelineCouter, setCodeLineCounter] = React.useState(0);
     const [valuesCompared, setValuesCompared] = React.useState([]);
+    const [disabled, setDisabled] = React.useState(false);
 
     React.useEffect(() => {
         setArray(generateArray(arraySize));
@@ -67,6 +68,7 @@ export default function MergeSortApp(){
     function insertionSortCaller(){
         animationTimeouts.forEach(timeoutId => clearTimeout(timeoutId));
         setAnimationTimeouts([]);
+        setDisabled(true);
 
         let auxillaryArray = array.slice();
         let tempArray = array.slice();
@@ -112,6 +114,7 @@ export default function MergeSortApp(){
             setArray(auxillaryArray);
             setSokerIndex(bars.length - 1);
             setisPopup(true);
+            setDisabled(false);
         }, animations.length * delay);
     }
 
@@ -135,7 +138,7 @@ export default function MergeSortApp(){
                     valueLabelDisplay="auto"
                     value={arraySize}
                     size="small"
-                    disabled={isSokerMode}
+                    disabled={isSokerMode || disabled}
                     onChange={(event) => {
                         setArraySize(event.target.value);
                     }}
@@ -153,7 +156,7 @@ export default function MergeSortApp(){
                     valueLabelDisplay="auto"
                     value={speed}
                     size="small"
-                    disabled={isSokerMode}
+                    disabled={isSokerMode || disabled}
                     onChange={(event) => {
                         setSpeed(event.target.value);
                     }}
@@ -166,7 +169,7 @@ export default function MergeSortApp(){
                 <FormControlLabel control={<Checkbox sx={{color: "#229799",'&.Mui-checked': {color: "#229799"}}}/>} onChange={() => {setisSoker(!isSokerMode); shuffle(Sokers.current)}} label="Soker Mode 🤡!"></FormControlLabel>
                 </Box>
                 <div style={{ padding: "20px 0px 0px 20px" }}>
-                            <Button onClick={insertionSortCaller} sx={{ textAlign: "center" }}>
+                            <Button onClick={insertionSortCaller} sx={{ textAlign: "center" }} disabled={disabled}>
                                 <Typography variant="body2" component="div" sx={{ fontFamily: "Pixelify Sans" }}>
                                     Sort Now!
                                 </Typography>

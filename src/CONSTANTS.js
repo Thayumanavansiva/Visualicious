@@ -30,7 +30,7 @@ export const Algos = [
         "name": "Merge",
         "image": "./merge-sort.gif",
         "path": "/sort/merge-sort"
-    },
+    }
 ]
 
 export const SOKERS = [
