@@ -1,6 +1,7 @@
+import PropTypes from "prop-types"
 import { Modal, Box, Typography } from "@mui/material";
 
-export default function Popup(isPopup, updatePopup, bars, sokerIndex){
+export default function Popup({isPopup, updatePopup, bars, sokerIndex}){
     return (
     <Modal
         open={isPopup}
@@ -24,3 +25,11 @@ export default function Popup(isPopup, updatePopup, bars, sokerIndex){
     </Modal>
     )
 }
+
+Popup.propTypes = {
+    isPopup: PropTypes.bool,
+    updatePopup: PropTypes.func,
+    bars: PropTypes.array,
+    sokerIndex: PropTypes.number
+}
+
