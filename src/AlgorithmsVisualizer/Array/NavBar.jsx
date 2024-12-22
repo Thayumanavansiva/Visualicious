@@ -1,65 +1,145 @@
+import * as React from 'react';
+
 import PropType from 'prop-types';
 
-import { Typography, AppBar, Box, Stack, Slider, Button, FormControlLabel, Checkbox } from '@mui/material';
+import { FormControl, Select, MenuItem } from '@mui/material';
+
+import { Typography, AppBar, Box, Stack, Slider, Button, TextField } from '@mui/material';
 
 
-export default function NavBar({arraySize, updateArraySize, speed, updateSpeed, isSokerMode, updateSokerMode, disabled, Sokers}) {
+export default function NavBar({name, type, params, updateParams, updateType}) {
+
+
+    // handle Params Changes Disable for different params...
+    React.useEffect(() => {
+        // create a disable state. [only for CREATE]
+
+        // if params.array.size > 0 then user has given an array so disable the other params.
+
+        // else disable textinput field and enable sliders...
+
+    }
+    , [params])
+
+    React.useEffect(() => {
+        console.log(type);
+    }, [type]);
+
+
+
     return (
         <>
         <Box sx={{ flexGrow: 1}}>
             <AppBar position="fixed" sx={{backgroundColor:"black", height: "70px"}}>
                 <Stack direction="row" sx={{columnGap: {"sm": "10px", "md": "100px"}}}>
-                <Typography variant="h5" component="div" sx={{fontFamily: "Pixelify Sans", padding: "20px 0px 0px 20px" }}>
-                    Bubble Sort
+                <Typography variant="h5" component="div" sx={{fontFamily: "Pixelify Sans", padding: "15px 0px 0px 20px" }}>
+                    {name}
                 </Typography>
-                <Stack direction="row" gap={3} sx={{padding: "25px 0px 0px 20px"}}>
+
+
+                <FormControl variant="outlined" sx={{width: "200px", padding: "5px 0px 0px 20px"}}>
+                <Select
+                    defaultValue={"CREATE"}
+                    inputProps={{
+                        name: 'age',
+                        id: 'custom-select',
+                    }}
+                    sx={{ 
+                        '& .MuiSelect-select': { color: 'white', fontFamily: "Pixelify Sans" },
+                        '& .MuiMenuItem-root': { color: 'white', fontFamily: "Pixelify Sans" },
+                        backgroundColor: '#333',
+                    }}
+                    onChange={(event) => updateType(event)}
+                >
+                    <MenuItem value="CREATE">Create</MenuItem>
+                    <MenuItem value="INSERT">Insert</MenuItem>
+                    <MenuItem value="REMOVE">Remove</MenuItem>
+                    <MenuItem value="MINIMUM">Minimum</MenuItem>
+                    <MenuItem value="MAXIMUM">Maximum</MenuItem>
+                    <MenuItem value="UPDATE">Update</MenuItem>
+                    <MenuItem value="Count">Count</MenuItem>
+                    <MenuItem value="SEARCH">Search</MenuItem>
+                    <MenuItem value="SUM">Sum</MenuItem>
+                    <MenuItem value="Unique">Unique</MenuItem>
+
+                </Select>
+                </FormControl>
+
+                {
+                    /*
+                    The Below Stack reflects the params of the selected type based on type conditionally render params
+                    */
+                }
+
+                { type === "CREATE" &&
+
+                <Stack direction="row" gap={4} sx={{padding: "5px 0px 0px 20px"}}>
+                
+                <Box sx={{width: "200px"}}>
                 <Typography variant = "body" component="div" sx={{fontFamily: "Pixelify Sans"}}>
                     Array Size
                 </Typography>
-                <Box sx={{width: "200px"}}>
                 <Slider
                     aria-label="Array Size"
                     defaultValue={5}
                     valueLabelDisplay="auto"
-                    value={arraySize}
+                    value={params.arraySize}
                     size="small"
                     onChange={(event) => {
-                        updateArraySize(event.target.value);
+                        updateParams("arraySize", event.target.value);
                     }}
-                    disabled={isSokerMode || disabled}
                     min={5}
                     max={100}
                 />  
                 </Box>
-                <Typography variant = "body" component="div" sx={{fontFamily: "Pixelify Sans"}}>
-                    Speed
-                </Typography>
+
+                <TextField id="filled-basic" label="Enter Array" variant="filled" sx={{
+                    backgroundColor: "#333", 
+                    borderRadius: "0.5rem", 
+                    "& .MuiInputBase-input": {
+                        color: "white", 
+                        fontFamily: "Pixelify Sans"
+                    },
+                    "& .MuiInputLabel-root": {
+                        color: "white",
+                        fontFamily: "Pixelify Sans"
+                    },
+                    "& .MuiFilledInput-root": {
+                        backgroundColor: "#333",
+                        borderRadius: "0.5rem"
+                    }
+                    }} onChange={(event) => updateParams("Array", event.target.value.split(","))}/>
+
                 <Box sx={{width: "200px"}}>
+                <Typography variant = "body" component="div" sx={{fontFamily: "Pixelify Sans"}}>
+                    Number of Elements
+                </Typography>
                 <Slider
-                    aria-label="Speed"
-                    defaultValue={1}
+                    aria-label="Array Size"
+                    defaultValue={5}
                     valueLabelDisplay="auto"
-                    value={speed}
+                    value={params.N}
                     size="small"
                     onChange={(event) => {
-                        updateSpeed(event.target.value);
+                        updateParams('N', event.target.value);
                     }}
-                    disabled={isSokerMode || disabled}
-                    min={1}
-                    max={50}
+                    min={5}
+                    max={100}
                 />  
                 </Box>
+
                 </Stack>
-                <Box sx={{padding: "18px 0px 0px 20px"}}>
-                <FormControlLabel control={<Checkbox sx={{color: "#229799",'&.Mui-checked': {color: "#229799"}}} onChange={() => {updateSokerMode(!isSokerMode); shuffle(Sokers)}} />} label="Soker Mode 🤡!"></FormControlLabel>
-                </Box>
+
+                }
+
+
                 <div style={{ padding: "20px 0px 0px 20px" }}>
-                            <Button sx={{ textAlign: "center" }} disabled={disabled}>
+                            <Button sx={{ textAlign: "center" }}>
                                 <Typography variant="body2" component="div" sx={{ fontFamily: "Pixelify Sans" }}>
-                                    Sort Now!
+                                    RUN!
                                 </Typography>
                             </Button>
-                        </div>         
+                </div>         
                 </Stack>
             </AppBar>            
         </Box>
@@ -68,12 +148,9 @@ export default function NavBar({arraySize, updateArraySize, speed, updateSpeed, 
 }
 
 NavBar.propTypes = {
-    arraySize: PropType.number,
-    updateArraySize: PropType.func,
-    speed: PropType.number,
-    updateSpeed: PropType.func,
-    isSokerMode: PropType.bool,
-    updateSokerMode: PropType.func,
-    disabled: PropType.bool,
-    Sokers: PropType.array
+    name: PropType.string,
+    type: PropType.string,
+    params: PropType.object,
+    updateParams: PropType.func,
+    updateType: PropType.func
 }
