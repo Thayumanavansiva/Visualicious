@@ -9,21 +9,21 @@ import { Typography, AppBar, Box, Stack, Slider, Button, TextField } from '@mui/
 
 export default function NavBar({name, type, params, updateParams, updateType}) {
 
+    const [disable, setDisable] = React.useState(true);
+
 
     // handle Params Changes Disable for different params...
     React.useEffect(() => {
+
         // create a disable state. [only for CREATE]
 
-        // if params.array.size > 0 then user has given an array so disable the other params.
+        // if params.Array.size > 0 then user has given an array so disable the other params.
 
         // else disable textinput field and enable sliders...
+        console.log(params);
 
     }
     , [params])
-
-    React.useEffect(() => {
-        console.log(type);
-    }, [type]);
 
 
 
@@ -89,11 +89,35 @@ export default function NavBar({name, type, params, updateParams, updateType}) {
                         updateParams("arraySize", event.target.value);
                     }}
                     min={5}
+                    disabled={disable}
                     max={100}
                 />  
                 </Box>
 
-                <TextField id="filled-basic" label="Enter Array" variant="filled" sx={{
+                <Box sx={{width: "200px"}}>
+                <Typography variant = "body" component="div" sx={{fontFamily: "Pixelify Sans"}}>
+                    Number of Elements
+                </Typography>
+                <Slider
+                    aria-label="Array Size"
+                    defaultValue={5}
+                    valueLabelDisplay="auto"
+                    value={params.N}
+                    size="small"
+                    onChange={(event) => {
+                        updateParams('N', event.target.value);
+                    }}
+                    disabled={disable}
+                    min={5}
+                    max={100}
+                />  
+                </Box>
+
+                <Typography variant = "body" component="div" sx={{fontFamily: "Pixelify Sans", padding: "15px 0px 0px 0px"}}>
+                    OR
+                </Typography>
+
+                <TextField id="filled-basic" label="Define your array" variant="filled" sx={{
                     backgroundColor: "#333", 
                     borderRadius: "0.5rem", 
                     "& .MuiInputBase-input": {
@@ -109,24 +133,6 @@ export default function NavBar({name, type, params, updateParams, updateType}) {
                         borderRadius: "0.5rem"
                     }
                     }} onChange={(event) => updateParams("Array", event.target.value.split(","))}/>
-
-                <Box sx={{width: "200px"}}>
-                <Typography variant = "body" component="div" sx={{fontFamily: "Pixelify Sans"}}>
-                    Number of Elements
-                </Typography>
-                <Slider
-                    aria-label="Array Size"
-                    defaultValue={5}
-                    valueLabelDisplay="auto"
-                    value={params.N}
-                    size="small"
-                    onChange={(event) => {
-                        updateParams('N', event.target.value);
-                    }}
-                    min={5}
-                    max={100}
-                />  
-                </Box>
 
                 </Stack>
 
