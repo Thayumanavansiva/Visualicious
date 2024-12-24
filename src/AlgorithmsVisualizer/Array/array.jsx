@@ -1,6 +1,7 @@
 import * as React from 'react';
 import NavBar from './NavBar.jsx';
-
+import Createarray from './createArray.jsx';
+import { Container, Stack } from '@mui/material';
 
 export default function ArrayApp() {
     const [type, setType] = React.useState("CREATE");
@@ -20,6 +21,8 @@ export default function ArrayApp() {
     }
 
     return (
+        <>
+
         <NavBar 
         name="Array"
         type={type}
@@ -27,5 +30,11 @@ export default function ArrayApp() {
         updateParams={updateParams}
         updateType={updateType}
         />
+
+        <Container sx={{marginTop: "20%", alignItems: "center", justifyContent: "center", display: "flex"}}>
+        <Createarray />
+        </Container>
+
+        </>
     )
 }

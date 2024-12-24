@@ -8,7 +8,8 @@ export default function NavBar({ name, type, params, updateParams, updateType })
     const [disable, setDisable] = React.useState(false);
 
     React.useEffect(() => {
-        if (params.Array && params.Array.length > 0) {
+        console.log(params);
+        if (params.Array && params.Array.length > 0 && params.Array[0] !== "") {
             setDisable(true);
         } else {
             setDisable(false);
