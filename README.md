@@ -8,7 +8,9 @@
 - **Insertion Sort**
 - **Selection Sort**
 - **Merge Sort**
-
+- **Quick Sort**
+- **Array**
+  
 **Dont Take me wrong: Working on to add more Algorithms 🧑‍🏭⚒️**
 
 
