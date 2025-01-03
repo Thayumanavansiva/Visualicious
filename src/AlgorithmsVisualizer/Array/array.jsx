@@ -1,7 +1,7 @@
 import * as React from 'react';
 import NavBar from './NavBar.jsx';
 import Createarray from './createArray.jsx';
-import { Container, Stack } from '@mui/material';
+import { Container } from '@mui/material';
 
 export default function ArrayApp() {
     const [type, setType] = React.useState("CREATE");
