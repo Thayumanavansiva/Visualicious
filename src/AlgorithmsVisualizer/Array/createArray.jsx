@@ -1,8 +1,29 @@
 import { Box, Stack } from '@mui/material';
 
-export default function createArray(){
+export default function createArray({params}){
 
-    const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const generateArray = (params) => {
+        let array = [];
+
+        if (params.arraySize <= params.N) {
+            params.N = params.arraySize;
+        }
+
+        for (let i = 0; i < params.N; i++) {
+            array.push(Math.floor(Math.random() * 100));
+        }
+
+        if (params.arraySize > params.N) {
+            for (let i = 0; i < params.arraySize - params.N; i++) {
+                array.push(undefined);
+            }
+        }
+
+        return array;
+
+    }
+
+    const array = params.Array.length > 0 && params.Array[0] !== "" ? params.Array : generateArray(params);
 
     return (
         <Stack direction="row">

@@ -143,18 +143,11 @@ export default function NavBar({ name, type, params, updateParams, updateType })
                         )}
 
                         {type === "INSERT" && (
-    <Stack direction="row" gap={4} sx={{ padding: "1px 0px 0px 5px" }}>
+    <Stack direction="row" gap={4} sx={{ padding: "5px 0px 0px 5px" }}>
         <Box sx={{ width: "200px" }}>
-            <Typography
-                variant="body"
-                component="div"
-                sx={{ fontFamily: "Pixelify Sans" }}
-            >
-                  Value to Insert
-            </Typography>
             <TextField
                 id=" insert-value"
-                label="Enter Value"
+                label="Enter insert value"
                 variant="filled"
                 sx={{
                     backgroundColor: "#333",
@@ -179,13 +172,6 @@ export default function NavBar({ name, type, params, updateParams, updateType })
         </Box>
 
         <Box sx={{ width: "200px" }}>
-            <Typography
-                variant="body"
-                component="div"
-                sx={{ fontFamily: "Pixelify Sans" }}
-            >
-                  Index Position
-            </Typography>
             <TextField
                 id="insert-index"
                 label="Enter Index"
@@ -224,25 +210,13 @@ export default function NavBar({ name, type, params, updateParams, updateType })
         }}
     >
     
-        <Box sx={{ marginTop: "-5px" }}> 
-            <Typography
-                variant="body2"
-                component="div"
-                sx={{
-                    fontFamily: "Pixelify Sans",
-                    marginBottom: "3px",
-                    textAlign: "center",
-                }}
-            >
-                Index to Remove
-            </Typography>
+        <Box sx={{ marginTop: "-5px", width: "200px" }}> 
             <TextField
                 id="remove-index"
-                placeholder="Enter index"
-                variant="outlined"
+                placeholder="Enter index to remove"
+                variant="filled"
                 size="small"
                 sx={{
-                    width: "130px",
                     backgroundColor: "#333",
                     borderRadius: "0.5rem",
                     "& .MuiInputBase-input": {
@@ -439,19 +413,9 @@ export default function NavBar({ name, type, params, updateParams, updateType })
     >
         
         <Box>
-            <Typography
-                variant="body2"
-                component="div"
-                sx={{
-                    fontFamily: "Pixelify Sans",
-                    marginBottom: "3px",
-                }}
-            >
-                Index to Update
-            </Typography>
             <TextField
                 id="update-index"
-                placeholder="Enter Index"
+                placeholder="Enter Index to update"
                 variant="filled"
                 sx={{
                     backgroundColor: "#333",
@@ -475,20 +439,10 @@ export default function NavBar({ name, type, params, updateParams, updateType })
             />
         </Box>
 
-                <Box>
-            <Typography
-                variant="body2"
-                component="div"
-                sx={{
-                    fontFamily: "Pixelify Sans",
-                    marginBottom: "3x",
-                }}
-            >
-                Value to Update
-            </Typography>
+            <Box>
             <TextField
                 id="update-value"
-                placeholder="Enter Value"
+                placeholder="Enter value to update"
                 variant="filled"
                 sx={{
                     backgroundColor: "#333",

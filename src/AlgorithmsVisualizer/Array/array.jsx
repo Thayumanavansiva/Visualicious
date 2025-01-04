@@ -5,7 +5,7 @@ import { Container } from '@mui/material';
 
 export default function ArrayApp() {
     const [type, setType] = React.useState("CREATE");
-    const [params, setParams] = React.useState({"arraySize": 10, "N": 6});
+    const [params, setParams] = React.useState({"arraySize": 10, "N": 6, "Array": []});
 
     const updateParams = (key, value) => {
         setParams((prev) => {
@@ -32,7 +32,7 @@ export default function ArrayApp() {
         />
 
         <Container sx={{marginTop: "20%", alignItems: "center", justifyContent: "center", display: "flex"}}>
-        <Createarray />
+        <Createarray params={params}/>
         </Container>
 
         </>
